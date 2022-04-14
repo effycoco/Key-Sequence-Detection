@@ -16,6 +16,8 @@
       console.log(e.key);
       pressed.push(e.key);
       console.log('before', pressed);
+      // 由于我们只想保留最后几个（secretCode.length）元素，pressed.length最多为scretCode.length+1
+      // 以下代码在pressed长度大于secretCode时pressed.splice(0,1), 否则 pressed.splice(0,0/负数)即什么都不做
       pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
       console.log('after', pressed);
       if (pressed.join('').includes(secretCode)) {
